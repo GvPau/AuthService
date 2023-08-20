@@ -1,0 +1,22 @@
+services:
+  Auth.Jwt:
+    class: ../services/Auth0TokenService
+
+  Auth.UserAuthenticator:
+    class: ../../domain/UserAuthenticator
+    arguments: ["@Auth.Jwt"]
+
+  Auth.UserRepository:
+    class: ../repositories/InMemoryUserRepository
+
+  Auth.UserSearcher:
+    class: ../../domain/UserSearcher
+    arguments: ["@Auth.UserRepository"]
+
+  Auth.application.Login:
+    class: ../../application/Login
+    arguments: ["@Auth.UserSearcher", "@Auth.UserAuthenticator"]
+
+  Auth.controller.Login:
+    class: ../controllers/LoginController
+    arguments: ["@Auth.application.Login"]

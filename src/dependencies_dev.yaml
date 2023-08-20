@@ -1,0 +1,2 @@
+imports:
+  - { resource: ./components/auth/infra/dependency-injection/index.yaml }
