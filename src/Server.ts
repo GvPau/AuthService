@@ -33,7 +33,7 @@ export class Server {
 
     registerRoutes(router);
 
-    router.use((err: Error, req: Request, res: Response, next: Function) => {
+    router.use((err: Error, req: Request, res: Response) => {
       console.log(err);
       res.status(httpStatus.INTERNAL_SERVER_ERROR).send(err.message);
     });
@@ -56,11 +56,11 @@ export class Server {
     });
   }
 
-  getHTTPServer() {
+  getHTTPServer(): http.Server | undefined {
     return this.httpServer;
   }
 
-  getExpress() {
+  getExpress(): express.Express {
     return this.express;
   }
 

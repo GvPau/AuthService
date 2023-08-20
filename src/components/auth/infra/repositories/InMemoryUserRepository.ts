@@ -18,7 +18,7 @@ export default class InMemoryUserRepository implements UserRepository {
     ],
   ]);
 
-  async searchByUserName(username: Username) {
+  async searchByUserName(username: Username): Promise<User | null> {
     return this.mapCacheUser.get(username.value) || null;
   }
 }

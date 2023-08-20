@@ -4,7 +4,7 @@ import { TokenClaims } from "../../domain/TokenService";
 import jsonwebtoken from "jsonwebtoken";
 
 export default class Auth0tokenService {
-  sign(props: TokenClaims) {
+  async sign(props: TokenClaims): Promise<Token> {
     return new Token(
       jsonwebtoken.sign(props, process.env.APP_SECRET || "", {
         expiresIn: process.env.TOKEN_EXPIRY_TIME,
@@ -12,7 +12,7 @@ export default class Auth0tokenService {
     );
   }
 
-  decode(token: Token): Promise<TokenClaims | null> {
+  async decode(token: Token): Promise<TokenClaims | null> {
     return new Promise((resolve, reject) => {
       jsonwebtoken.verify(token.value, process.env.APP_SECRET || "", (err, decoded) => {
         if (err) {

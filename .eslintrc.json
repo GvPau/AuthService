@@ -4,8 +4,8 @@
         "es2021": true
     },
     "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
-    "parser": "@typescript-eslint/parser",
     "plugins": ["@typescript-eslint", "prettier"],
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "project": "./tsconfig.json"
       },
@@ -16,15 +16,15 @@
         "eol-last": "error",
         "semi": "error",
         "camelcase": "error",
-        "no-unused-vars": "error",
+        "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
         "arrow-spacing": "error",
-        "no-return-await": "error",
+        "no-return-await": "off",
         "@typescript-eslint/no-unused-vars": [
           "error",
           { "varsIgnorePattern": "^_" }
         ],
         "@typescript-eslint/explicit-module-boundary-types": "error",
-        "@typescript-eslint/no-explicit-any": "error",
+        "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-throw-literal": "error",
         "@typescript-eslint/no-unsafe-return": "error",
         "@typescript-eslint/await-thenable": "error",

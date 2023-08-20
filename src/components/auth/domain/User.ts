@@ -20,9 +20,15 @@ export default class User {
     this.id = id;
     this.username = username;
     this.password = password;
+    this.createdAt = createdAt;
   }
 
-  static create(id: Id, username: Username, password: Password, createdAt: CreatedAt) {
+  static create(
+    id: Id,
+    username: Username,
+    password: Password,
+    createdAt: CreatedAt,
+  ): User {
     return new User(id, username, password, createdAt);
   }
 
@@ -42,7 +48,7 @@ export default class User {
     return this.token;
   }
 
-  setToken(token: Token) {
+  setToken(token: Token): void {
     this.token = token;
   }
 

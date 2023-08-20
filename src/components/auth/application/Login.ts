@@ -1,4 +1,5 @@
 import Password from "../domain/Password";
+import User from "../domain/User";
 import UserAuthentication from "../domain/UserAuthenticator";
 import UserNotFoundException from "../domain/UserNotFoundException";
 import UserSearcher from "../domain/UserSearcher";
@@ -13,7 +14,7 @@ export default class Login {
     this.authenticator = authenticator;
   }
 
-  async execute(username: string, password: string) {
+  async execute(username: string, password: string): Promise<User> {
     const user = await this.searcher.execute(new Username(username));
 
     if (user === null) {
