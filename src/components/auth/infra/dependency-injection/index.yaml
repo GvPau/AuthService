@@ -13,9 +13,21 @@ services:
     class: ../../domain/UserSearcher
     arguments: ["@Auth.UserRepository"]
 
+  Auth.UserCreator:
+    class: ../../domain/UserCreator
+    arguments: ["@Auth.UserRepository"]
+
+  Auth.application.CreateUser:
+    class: ../../application/CreateUser
+    arguments: ["@Auth.UserCreator"]
+
   Auth.application.Login:
     class: ../../application/Login
     arguments: ["@Auth.UserSearcher", "@Auth.UserAuthenticator"]
+
+  Auth.controller.CreateUser:
+    class: ../controllers/CreateUserController
+    arguments: ["@Auth.application.CreateUser"]
 
   Auth.controller.Login:
     class: ../controllers/LoginController
