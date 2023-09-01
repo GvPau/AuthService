@@ -16,6 +16,15 @@ export default class InMemoryUserRepository implements UserRepository {
         new CreatedAt(new Date()),
       ),
     ],
+    [
+      "5a2e9460-63c6-4e72-8c3b-aca967c1587e",
+      User.create(
+        new Id("5a2e9460-63c6-4e72-8c3b-aca967c1587e"),
+        new Username("pau2"),
+        new Password("pau2"),
+        new CreatedAt(new Date()),
+      ),
+    ],
   ]);
 
   async searchByUserName(username: Username): Promise<User | null> {
@@ -28,5 +37,21 @@ export default class InMemoryUserRepository implements UserRepository {
 
   async save(user: User): Promise<void> {
     this.mapCacheUser.set(user.getUsername().value, user);
+  }
+
+  async saveById(user: User): Promise<void> {
+    this.mapCacheUser.set(user.getId().value, user);
+  }
+
+  async search(ids: Id[]): Promise<User[]> {
+    const users: User[] = [];
+    ids.forEach((id) => {
+      const user = this.mapCacheUser.get(id.value);
+      if (user) {
+        users.push(user);
+      }
+    });
+
+    return users;
   }
 }
