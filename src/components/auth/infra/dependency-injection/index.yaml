@@ -17,9 +17,17 @@ services:
     class: ../../domain/UserCreator
     arguments: ["@Auth.UserRepository"]
 
+  Auth.UserFinder:
+    class: ../../domain/UserFinder
+    arguments: ["@Auth.UserRepository"]
+
   Auth.application.CreateUser:
     class: ../../application/CreateUser
     arguments: ["@Auth.UserCreator"]
+
+  Auth.application.FindUser:
+    class: ../../application/FindUser
+    arguments: ["@Auth.UserFinder"]
 
   Auth.application.Login:
     class: ../../application/Login
@@ -28,6 +36,10 @@ services:
   Auth.controller.CreateUser:
     class: ../controllers/CreateUserController
     arguments: ["@Auth.application.CreateUser"]
+
+  Auth.controller.FindUser:
+    class: ../controllers/FindUserController
+    arguments: ["@Auth.application.FindUser"]
 
   Auth.controller.Login:
     class: ../controllers/LoginController
