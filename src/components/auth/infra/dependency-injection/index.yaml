@@ -21,6 +21,10 @@ services:
     class: ../../domain/UserFinder
     arguments: ["@Auth.UserRepository"]
 
+  Auth.UserRemover:
+    class: ../../domain/UserRemover
+    arguments: ["@Auth.UserRepository"]
+
   Auth.application.CreateUser:
     class: ../../application/CreateUser
     arguments: ["@Auth.UserCreator"]
@@ -28,6 +32,10 @@ services:
   Auth.application.FindUser:
     class: ../../application/FindUser
     arguments: ["@Auth.UserFinder"]
+
+  Auth.application.RemoveUser:
+    class: ../../application/RemoveUser
+    arguments: ["@Auth.UserRemover"]
 
   Auth.application.Login:
     class: ../../application/Login
@@ -40,6 +48,10 @@ services:
   Auth.controller.FindUser:
     class: ../controllers/FindUserController
     arguments: ["@Auth.application.FindUser"]
+
+  Auth.controller.RemoveUser:
+    class: ../controllers/RemoveUserController
+    arguments: ["@Auth.application.RemoveUser"]
 
   Auth.controller.Login:
     class: ../controllers/LoginController

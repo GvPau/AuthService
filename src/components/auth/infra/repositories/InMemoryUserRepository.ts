@@ -35,6 +35,10 @@ export default class InMemoryUserRepository implements UserRepository {
     return !!this.mapCacheUser.get(username.value);
   }
 
+  async existsById(id: Id): Promise<boolean> {
+    return !!this.mapCacheUser.get(id.value);
+  }
+
   async save(user: User): Promise<void> {
     this.mapCacheUser.set(user.getUsername().value, user);
   }
@@ -53,5 +57,9 @@ export default class InMemoryUserRepository implements UserRepository {
     });
 
     return users;
+  }
+
+  async delete(id: Id): Promise<void> {
+    this.mapCacheUser.delete(id.value);
   }
 }

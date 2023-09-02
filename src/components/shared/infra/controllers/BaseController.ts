@@ -11,7 +11,7 @@ export default abstract class BaseController {
       res.type("application/json");
       return res.status(200).json(dto);
     } else {
-      return res.status(200);
+      return res.sendStatus(200);
     }
   }
 
