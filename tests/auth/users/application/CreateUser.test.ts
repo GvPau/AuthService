@@ -3,7 +3,7 @@ import UserMother from "../domain/UserMother";
 import UserCreator from "../../../../src/components/auth/domain/UserCreator";
 import CreateUser from "../../../../src/components/auth/application/CreateUser";
 
-describe("Create Template", () => {
+describe("Create User", () => {
   it("should create a user", async () => {
     // Arrange
     const user = UserMother.random();
