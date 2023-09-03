@@ -31,6 +31,18 @@ export default class InMemoryUserRepository implements UserRepository {
     return this.mapCacheUser.get(username.value) || null;
   }
 
+  async search(ids: Id[]): Promise<User[]> {
+    const users: User[] = [];
+    ids.forEach((id) => {
+      const user = this.mapCacheUser.get(id.value);
+      if (user) {
+        users.push(user);
+      }
+    });
+
+    return users;
+  }
+
   async exists(username: Username): Promise<boolean> {
     return !!this.mapCacheUser.get(username.value);
   }
@@ -47,19 +59,11 @@ export default class InMemoryUserRepository implements UserRepository {
     this.mapCacheUser.set(user.getId().value, user);
   }
 
-  async search(ids: Id[]): Promise<User[]> {
-    const users: User[] = [];
-    ids.forEach((id) => {
-      const user = this.mapCacheUser.get(id.value);
-      if (user) {
-        users.push(user);
-      }
-    });
-
-    return users;
-  }
-
   async delete(id: Id): Promise<void> {
     this.mapCacheUser.delete(id.value);
+  }
+
+  async update(user: User): Promise<void> {
+    this.mapCacheUser.set(user.getId().value, user);
   }
 }

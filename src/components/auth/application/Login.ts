@@ -1,21 +1,21 @@
-import Password from "../domain/Password";
 import User from "../domain/User";
+import Username from "../domain/Username";
+import Password from "../domain/Password";
+import LoginSearcher from "../domain/LoginSearcher";
 import UserAuthentication from "../domain/UserAuthenticator";
 import UserNotFoundException from "../domain/UserNotFoundException";
-import UserSearcher from "../domain/UserSearcher";
-import Username from "../domain/Username";
 
 export default class Login {
-  private searcher: UserSearcher;
+  private loginSearcher: LoginSearcher;
   private authenticator: UserAuthentication;
 
-  constructor(searcher: UserSearcher, authenticator: UserAuthentication) {
-    this.searcher = searcher;
+  constructor(loginSearcher: LoginSearcher, authenticator: UserAuthentication) {
+    this.loginSearcher = loginSearcher;
     this.authenticator = authenticator;
   }
 
   async execute(username: string, password: string): Promise<User> {
-    const user = await this.searcher.execute(new Username(username));
+    const user = await this.loginSearcher.execute(new Username(username));
 
     if (user === null) {
       throw new UserNotFoundException(username);

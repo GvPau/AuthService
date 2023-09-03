@@ -4,6 +4,7 @@ import LoginController from "../components/auth/infra/controllers/LoginControlle
 import CreateUserController from "../components/auth/infra/controllers/CreateUserController";
 import FindUserController from "../components/auth/infra/controllers/FindUserController";
 import RemoveUserController from "../components/auth/infra/controllers/RemoveUserController";
+import UpdateUserController from "../components/auth/infra/controllers/UpdateUserController";
 
 export const register = async (router: Router): Promise<void> => {
   // Login
@@ -32,5 +33,13 @@ export const register = async (router: Router): Promise<void> => {
   );
   router.delete("/users/:id", async (req: Request, res: Response) => {
     await removeUser.execute(req, res);
+  });
+
+  // User Update
+  const updateUser: UpdateUserController = (await container).get(
+    "Auth.controller.UpdateUser",
+  );
+  router.put("/users/:id", async (req: Request, res: Response) => {
+    await updateUser.execute(req, res);
   });
 };

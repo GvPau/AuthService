@@ -8,14 +8,14 @@ export default class User {
   private id: Id;
   private username: Username;
   private password: Password;
-  private token!: Token;
-  private createdAt!: CreatedAt;
+  private token?: Token;
+  private createdAt?: CreatedAt;
 
   private constructor(
     id: Id,
     username: Username,
     password: Password,
-    createdAt: CreatedAt,
+    createdAt?: CreatedAt,
   ) {
     this.id = id;
     this.username = username;
@@ -32,6 +32,10 @@ export default class User {
     return new User(id, username, password, createdAt);
   }
 
+  static update(id: Id, username: Username, password: Password): User {
+    return new User(id, username, password);
+  }
+
   getId(): Id {
     return this.id;
   }
@@ -45,7 +49,7 @@ export default class User {
   }
 
   getToken(): Token {
-    return this.token;
+    return this.token as Token;
   }
 
   setToken(token: Token): void {
@@ -53,6 +57,14 @@ export default class User {
   }
 
   getCreatedAt(): CreatedAt {
-    return this.createdAt;
+    return this.createdAt as CreatedAt;
+  }
+
+  setUsername(username: Username): void {
+    this.username = username;
+  }
+
+  setPassword(password: Password): void {
+    this.password = password;
   }
 }

@@ -3,7 +3,7 @@ import User from "../../domain/User";
 interface UserJSON {
   id: string;
   username: string;
-  createdAt: Date;
+  createdAt?: Date;
 }
 
 export default class UserJsonConverter {
@@ -19,7 +19,6 @@ export default class UserJsonConverter {
     return {
       id: user.getId().value,
       username: user.getUsername().value,
-      createdAt: user.getCreatedAt().value,
     };
   }
 }
