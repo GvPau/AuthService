@@ -9,5 +9,6 @@ export default interface UserRepository {
   save: (_user: User) => Promise<void>;
   search: (_userIds: Id[]) => Promise<User[]>;
   delete: (_id: Id) => Promise<void>;
+  update: (_user: User) => Promise<void>;
   // eslint-disable-next-line semi
 }
