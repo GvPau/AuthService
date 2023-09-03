@@ -8,8 +8,8 @@
 - [Features](#features)
 - [Prerequisites](#prerequisites)
 - [Getting Started](#getting-started)
-  - [Installation and Usage](#installation)
-- [Tests](#test)
+  - [Installation and Usage](#installation-and-usage)
+- [Tests](#tests)
 
 ## Introduction
 
@@ -33,7 +33,7 @@ Before you begin, ensure you have met the following requirements installations:
 
 ## Getting Started
 
-### Installation and Usage
+### Installation And Usage
 
 To get started with the Authentication Service Microservice, follow these steps:
 
@@ -58,4 +58,4 @@ To get started with the Authentication Service Microservice, follow these steps:
 
 ### Tests
 
-    npm run dev
+    npm run test
