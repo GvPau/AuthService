@@ -40,7 +40,7 @@ To get started with the Authentication Service Microservice, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/authentication-service.git
+   git clone https://github.com/GvPau/AuthService
    cd authentication-service
    ```
 
